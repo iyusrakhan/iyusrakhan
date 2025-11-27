@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Lifetime Value Prediction – Big Data Analytics Project</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">Customer Lifetime Value Prediction</h1>
+            <p class="hero-subtitle">A Big Data & Machine Learning Pipeline for Customer Lifetime Value Prediction in Retail</p>
+            <a href="#report-start" class="btn btn-primary">View Report <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </header>
+
+    <section id="authors" class="authors-section">
+        <div class="container">
+            <h2 class="section-title">Presented By</h2>
+            <div class="author-cards">
+                <div class="author-card fade-in">
+                    <div class="photo-placeholder"></div>
+                    <h3>Lyaba Farooq</h3>
+                </div>
+                <div class="author-card fade-in delay-2">
+                    <div class="photo-placeholder"></div>
+                    <h3>Muskan Asad</h3>
+                </div>
+                <div class="author-card fade-in delay-4">
+                    <div class="photo-placeholder"></div>
+                    <h3>Yusra Khan</h3>
+                </div>
+            </div>
+            <p class="authors-affiliate">(Students of Data Science – IMSciences, Peshawar)</p>
+        </div>
+    </section>
+    
+    <div id="report-start"></div>
+
+    <section id="problem-id" class="report-section bg-light-gray">
+        <div class="container fade-in">
+            <h2 class="section-title"><i class="fas fa-search-dollar icon-purple"></i> 1. Problem Identification</h2>
+            <p class="section-intro">This use case is critical because it allows the business to move beyond treating all customers equally, instead focusing efforts on those identified as the most valuable.</p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-chart-line icon-blue"></i>
+                    <h3>Use Case Selected</h3>
+                    <p>We selected <strong>Customer Lifetime Value (CLV) Prediction</strong> from the retail analytics domain.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-bullseye icon-blue"></i>
+                    <h3>Business Goal</h3>
+                    <p>The aim is to use data analysis to identify high-value customers by predicting their future spending patterns.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-funnel-dollar icon-blue"></i>
+                    <h3>Strategic Action</h3>
+                    <p>Prediction enables targeted marketing offers, prioritized sales efforts, and proactive customer service to improve retention for key customers.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-cogs icon-blue"></i>
+                    <h3>Project Scope</h3>
+                    <p>Design a scalable pipeline that converts raw transaction history into a predicted numerical CLV score for each customer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="data-sourcing" class="report-section">
+        <div class="container fade-in">
+            <h2 class="section-title"><i class="fas fa-database icon-purple"></i> 2. Data Sourcing</h2>
+            <p class="section-intro">The chosen dataset is <strong>Online Retail II</strong>, a publicly available, real-world transactional dataset well-suited for a big data application.</p>
+            
+            <div class="data-sourcing-content">
+                <div class="data-metadata-card">
+                    <h3>Metadata Summary</h3>
+                    <div class="metadata-item">
+                        <i class="fas fa-layer-group"></i> <span>Dataset Name:</span> <strong>Online Retail II</strong>
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-table"></i> <span>Total Rows:</span> 1,067,371 transaction records
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-columns"></i> <span>Total Features:</span> 8 raw features
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-calendar-alt"></i> <span>Time Span:</span> Almost two years
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-flag"></i> <span>Source:</span> UCI Machine Learning Repository
+                    </div>
+                </div>
+                <div class="data-description-box">
+                    <h3>Dataset Description</h3>
+                    <p>It contains detailed transaction records from a UK-based online retail store. Its large volume makes it ideal for calculating <strong>RFM metrics</strong> (Recency, Frequency, Monetary Value) necessary for CLV prediction.</p>
+                    <a href="https://www.kaggle.com/datasets/mashlyn/online-retail-ii-uci" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-kaggle"></i> View Kaggle Dataset
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pipeline-design" class="report-section bg-light-gray">
+        <div class="container fade-in">
+            <h2 class="section-title"><i class="fas fa-bezier-curve icon-purple"></i> 3. Pipeline Design</h2>
+            <p class="section-intro">We are designing a robust, scalable pipeline suitable for large, transactional data that facilitates subsequent machine learning tasks.</p>
+            
+            <div class="pipeline-steps-grid">
+                <div class="pipeline-step-card">
+                    <div class="step-icon"><i class="fas fa-upload"></i></div>
+                    <h3>1. Data Ingestion</h3>
+                    <p>Batch processing using <strong>Apache Spark</strong> to load raw CSV files from <strong>HDFS or AWS S3</strong> (distributed reading).</p>
+                </div>
+                <div class="pipeline-step-card">
+                    <div class="step-icon"><i class="fas fa-hdd"></i></div>
+                    <h3>2. Storage Layer</h3>
+                    <p>Raw data in <strong>HDFS/S3 (Data Lake)</strong>. Processed, aggregated data in <strong>Parquet columnar format</strong> for optimized reading speed.</p>
+                </div>
+                <div class="pipeline-step-card">
+                    <div class="step-icon"><i class="fas fa-wrench"></i></div>
+                    <h3>3. Processing (ETL)</h3>
+                    <p>Distributed ETL using <strong>PySpark</strong>. Includes cleaning (removing missing IDs, negative values) and aggregating data to create <strong>RFM features</strong>.</p>
+                </div>
+                <div class="pipeline-step-card">
+                    <div class="step-icon"><i class="fas fa-brain"></i></div>
+                    <h3>4. Analytics & Modeling</h3>
+                    <p>Training regression models (primarily <strong>XGBoost Regressor</strong>) on feature-engineered data, with Linear Regression as a baseline.</p>
+                </div>
+                <div class="pipeline-step-card">
+                    <div class="step-icon"><i class="fas fa-chart-area"></i></div>
+                    <h3>5. Visualization Layer</h3>
+                    <p>Dashboards using <strong>Tableau</strong> or <strong>Power BI</strong> to present CLV predictions and customer segments for stakeholders.</p>
+                </div>
+            </div>
+            
+            <div class="arch-diagram-placeholder">
+                <p class="diagram-note"><i class="fas fa-project-diagram"></i> Full Architectural Diagram is included in the Appendix of the PDF submission.</p>
+                <img src="architecture_diagram.png" alt="Big Data Pipeline Architecture Diagram" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <section id="ml-methodology" class="report-section">
+        <div class="container fade-in">
+            <h2 class="section-title"><i class="fas fa-robot icon-purple"></i> 4. Machine Learning Methodology</h2>
+            
+            <div class="ml-subsections">
+                <div class="ml-col">
+                    <h3>Pre-processing Strategy</h3>
+                    <ul>
+                        <li><i class="fas fa-trash-alt"></i> Handling Missing Values: Rows with missing `CustomerID` are removed, and invalid records (negative quantity/price) are also removed.</li>
+                        <li><i class="fas fa-code-branch"></i> Categorical Variables: The `Country` variable uses <strong>One-Hot Encoding</strong> because it is a nominal (non-ordered) variable.</li>
+                        <li><i class="fas fa-magic"></i> Feature Engineering: The creation of <strong>RFM features</strong> (Recency, Frequency, Monetary) is the fundamental step for CLV.</li>
+                        <li><i class="fas fa-sliders-h"></i> Scaling Strategy: <strong>Standardization</strong> (Z-score scaling) is applied to all numerical features to improve training stability for gradient boosting models.</li>
+                    </ul>
+                </div>
+                <div class="ml-col">
+                    <h3>Algorithm Recommendation: XGBoost Regressor</h3>
+                    <div class="justification-box">
+                        <p class="algorithm-name">Recommended Model: <strong>XGBoost Regressor</strong> (Gradient Boosted Decision Tree)</p>
+                        <p><strong>Justification:</strong></p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Problem Type: CLV is a <strong>regression task</strong> that predicts a continuous future spending value.</li>
+                            <li><i class="fas fa-check-circle"></i> Data Suitability: XGBoost excels on <strong>structured/tabular data</strong> common in retail analytics.</li>
+                            <li><i class="fas fa-check-circle"></i> Robustness: It is highly robust to <strong>outliers and skewed distributions</strong>, which are common in CLV data.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dataset-analysis">
+                <h3>Dataset Analysis (Online Retail II)</h3>
+                <div class="analysis-cards">
+                    <div class="analysis-card">
+                        <i class="far fa-clock"></i>
+                        <h4>Time-Series Nature</h4>
+                        <p>Data is structured, multivariate, and <strong>time-series</strong> in nature, requiring time-based feature calculation and modeling.</p>
+                    </div>
+                    <div class="analysis-card">
+                        <i class="fas fa-balance-scale-unbalanced"></i>
+                        <h4>High Imbalance</h4>
+                        <p>The target CLV variable is <strong>highly imbalanced and right-skewed</strong>. This is handled effectively by XGBoost.</p>
+                    </div>
+                    <div class="analysis-card">
+                        <i class="fas fa-cubes"></i>
+                        <h4>Dimensionality</h4>
+                        <p>Raw data is low-dimensional, but feature engineering creates a <strong>medium-dimensional</strong> dataset (15-25 features).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="implementation" class="report-section bg-light-gray">
+        <div class="container fade-in">
+            <h2 class="section-title"><i class="fas fa-code icon-purple"></i> 5. Implementation Plan</h2>
+            
+            <h3>Library Selection</h3>
+            <ul class="library-list">
+                <li><i class="fas fa-book"></i> <strong>Data Processing:</strong> pyspark (large-scale ETL and aggregation) and pandas (manipulation)</li>
+                <li><i class="fas fa-book"></i> <strong>Modeling:</strong> xgboost (main regressor) and scikit-learn (scaling/splitting)</li>
+                <li><i class="fas fa-book"></i> <strong>Visualization:</strong> matplotlib and seaborn (feature importance/diagnostics)</li>
+            </ul>
+
+            <h3>Pseudo-Code / Logic Flow</h3>
+            <pre class="code-block"><code>
+1. LOAD raw transaction data into a PySpark DataFrame.
+2. CLEAN data: Remove canceled invoices, missing CustomerID, or invalid values.
+3. CREATE customer-level features: Group by CustomerID and compute RFM features.
+4. DEFINE TARGET (CLV): Calculate future total spend as the CLV label.
+5. PRE-PROCESS: Apply One-Hot Encoding and StandardScaler to features.
+6. SPLIT the feature set into training (80%) and testing (20%) sets.
+7. TRAIN the main model: Fit the XGBoost Regressor on the training set.
+8. EVALUATE model: Predict CLV on the test set and calculate evaluation metrics.
+9. INTERPRET results: Analyze feature importance from XGBoost.
+10. DEPLOY: Save the final trained model for production use.
+            </code></pre>
+        </div>
+    </section>
+
+    <section id="evaluation-metrics" class="report-section">
+        <div class="container fade-in">
+            <h2 class="section-title"><i class="fas fa-calculator icon-purple"></i> 6. Evaluation Metrics</h2>
+            <p class="section-intro">Since CLV is a regression problem, metrics that measure the error magnitude in currency terms are required.</p>
+            
+            <div class="metric-cards-grid">
+                <div class="metric-card">
+                    <i class="fas fa-medal icon-blue"></i>
+                    <h4>RMSE (Primary Metric)</h4>
+                    <p><strong>Root Mean Squared Error.</strong> It is the most critical metric because it <strong>heavily penalizes large prediction errors</strong>. Minimizing large errors on high-value customers is the top business priority.</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-dollar-sign icon-blue"></i>
+                    <h4>MAE</h4>
+                    <p><strong>Mean Absolute Error.</strong> Provides an easily interpretable average error in currency units, useful for business reporting.</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-percent icon-blue"></i>
+                    <h4>R²</h4>
+                    <p><strong>R-squared (Coefficient of Determination).</strong> Explains the percentage of variance in customer value that the model accounts for.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusion" class="report-section bg-light-gray">
+        <div class="container fade-in">
+            <h2 class="section-title">7. Conclusion</h2> <p>This proposal details a comprehensive, scalable Customer Lifetime Value prediction solution utilizing a PySpark-based pipeline and the high-performance XGBoost Regressor. The focus on robust feature engineering (RFM) and the critical evaluation metric of RMSE ensures the resulting model is highly accurate and directly supports strategic business decisions.</p>
+            
+            <div class="highlight-box">
+                <p><strong>Accurate, Scalable, Business-Oriented CLV Prediction Pipeline</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <p>Project: Customer Lifetime Value Prediction</p>
+                <p>Course: Big Data Analytics</p>
+                <p>Institution: IMSciences Peshawar</p>
+                <p>Year: 2025</p>
+            </div>
+            <div class="footer-authors">
+                <p>Presented By: Lyaba Farooq, Muskan Asad, Yusra Khan</p>
+            </div>
+            <p class="copyright">&copy; 2025 Data Science Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
