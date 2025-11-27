@@ -25,6 +25,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth; /* Smooth scrolling for nav links */
 }
 
 body {
@@ -33,6 +34,7 @@ body {
     color: var(--color-text-dark);
     background-color: var(--color-background-light);
     overflow-x: hidden;
+    padding-top: 60px; /* Space for fixed navigation bar */
 }
 
 .container {
@@ -54,9 +56,9 @@ h2 {
 }
 
 /* Specific Font Weights */
-body { font-weight: 400; } /* Inter Regular */
-strong { font-weight: 600; } /* Bolding for Headings/Key text */
-h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
+body { font-weight: 400; } 
+strong { font-weight: 600; } 
+h4 { font-weight: 500; } 
 
 
 .section-title {
@@ -73,13 +75,61 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     margin-bottom: 40px;
 }
 
+/* --- Navigation Bar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-card-background);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    font-size: 1.2rem;
+}
+
+.nav-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 25px;
+    padding-bottom: 3px;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent; /* Ensure space for border */
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.nav-links a.active { /* Scroll Spy Active Style */
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+
 /* Buttons */
 .btn {
     display: inline-block;
     padding: 12px 25px;
     border-radius: var(--border-radius);
     text-decoration: none;
-    font-weight: 600; /* Inter Semibold */
+    font-weight: 600; 
     transition: all var(--transition-speed) ease-in-out;
     border: none;
     cursor: pointer;
@@ -108,11 +158,9 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     transform: translateY(-2px);
 }
 
-/* Hero Section: Updated Gradient Background with Image Blend */
+/* Hero Section */
 .hero {
-    /* Use the abstract blue image provided (rename it to hero_bg.jpg) */
     background: url('hero_bg.jpg') center center/cover no-repeat;
-    /* Added color overlay using the dark accent color to deepen the blue */
     background-color: var(--color-primary-dark); 
     background-blend-mode: overlay; 
     color: var(--color-card-background);
@@ -122,6 +170,7 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .hero-title {
@@ -157,12 +206,13 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     border-radius: var(--border-radius);
     background-color: var(--color-card-background);
     box-shadow: 0 4px 10px var(--color-shadow);
-    transition: transform var(--transition-speed) ease-in-out;
+    transition: all var(--transition-speed) ease-in-out; 
     width: 250px;
 }
-
-.author-card:hover {
+/* Shadow Hover Effect */
+.author-card:hover, .info-card:hover, .pipeline-step-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Lift card and deepen shadow */
 }
 
 /* Photo Placeholder: Decent Bubble Style */
@@ -174,13 +224,11 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     margin: 0 auto 15px;
     border: 3px solid transparent; 
     background-clip: padding-box;
-    /* Clean blue border */
     box-shadow: 0 0 0 3px var(--color-primary), inset 0 0 0 1000px var(--color-background-light); 
     transition: box-shadow var(--transition-speed);
 }
 
 .author-card:hover .photo-placeholder {
-     /* Darker blue border on hover */
     box-shadow: 0 0 0 3px var(--color-primary-dark), inset 0 0 0 1000px var(--color-background-light);
 }
 
@@ -203,7 +251,7 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
 
 /* Icons */
 .icon-purple {
-    color: var(--color-primary); /* Using Primary Blue for main icons */
+    color: var(--color-primary); 
     margin-right: 10px;
 }
 .icon-blue {
@@ -227,22 +275,6 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     color: var(--color-text-secondary);
 }
 
-.info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.info-card i {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.info-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: var(--color-text-dark);
-}
-
 /* Data Sourcing */
 .data-sourcing-content {
     display: flex;
@@ -257,34 +289,13 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     flex: 1;
 }
 
-.data-metadata-card {
-    background-color: var(--color-card-background);
-}
-
-.data-description-box {
-    background-color: var(--color-background-light);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.metadata-item {
-    margin-bottom: 15px;
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-}
-
-.metadata-item i {
-    color: var(--color-primary);
-    margin-right: 10px;
-}
-
-/* Pipeline Design */
+/* Pipeline Design Grid */
 .pipeline-steps-grid {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 50px; 
 }
 
 .pipeline-step-card {
@@ -298,6 +309,7 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     max-width: 250px;
     border-top: 5px solid var(--color-primary);
     color: var(--color-text-secondary);
+    transition: all var(--transition-speed) ease-in-out; 
 }
 
 .step-icon i {
@@ -306,128 +318,118 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     margin-bottom: 10px;
 }
 
-.arch-diagram-placeholder {
-    margin-top: 60px;
+/* Architecture Integration Section */
+.arch-integration {
     text-align: center;
-    padding: 30px;
+    padding: 40px 20px;
     background-color: var(--color-card-background);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 15px var(--color-shadow);
 }
 
-.diagram-note {
-    font-style: italic;
-    color: var(--color-text-secondary);
-    margin-bottom: 20px;
+.arch-heading {
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+    font-size: 1.8rem;
 }
 
-/* ML Methodology */
+.arch-subheading {
+    color: var(--color-text-secondary);
+    margin-bottom: 30px;
+}
+
+.diagram-image {
+    max-width: 90%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: 1px solid var(--color-card-border);
+}
+
+/* ML Methodology - SPACING FIXES */
 .ml-subsections {
     display: flex;
     gap: 40px;
+    margin-top: 20px; 
+}
+.ml-subsections .ml-col h3 {
+    margin-top: 30px; /* Ensure spacing above subheadings */
+    margin-bottom: 20px;
 }
 
 .ml-col {
     flex: 1;
     min-width: 40%;
+    position: relative; 
 }
 
-.ml-col h3 {
-    border-bottom: 2px solid var(--color-primary);
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-    color: var(--color-text-dark);
-}
-
-.ml-col ul {
-    list-style: none;
-}
-
-.ml-col ul li {
-    margin-bottom: 15px;
-    padding-left: 20px;
-    color: var(--color-text-secondary);
-}
-
-.ml-col ul li i {
-    color: var(--color-primary);
-    margin-left: -20px;
-    margin-right: 5px;
-}
-
+/* Sticky Justification Box Styles */
 .justification-box {
     background-color: var(--color-background-light); 
     border-left: 5px solid var(--color-primary);
     padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 5px var(--color-shadow);
+    z-index: 900; 
 }
 
-.algorithm-name {
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--color-text-dark);
-}
-
-.dataset-analysis {
-    margin-top: 50px;
-}
-
-.analysis-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.analysis-card {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--color-background-light);
+/* --- Block Containers (Dataset Analysis, Library Selection) --- */
+.info-block-card {
+    /* Base style for bubble containers */
+    background-color: var(--color-card-background);
     border-radius: var(--border-radius);
-    border: 1px solid var(--color-card-border);
-    color: var(--color-text-secondary);
+    box-shadow: 0 4px 15px var(--color-shadow);
+    padding: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-card-border); 
 }
 
-.analysis-card i {
-    font-size: 2rem;
-    color: var(--color-primary-dark);
-    margin-bottom: 10px;
+/* Apply block to Dataset Analysis structure */
+.dataset-analysis h3 {
+    margin-top: 30px; 
 }
+
+.dataset-analysis .analysis-cards {
+    background-color: var(--color-card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--color-shadow);
+    padding: 25px;
+    margin-top: 20px; /* Separate block from heading */
+}
+
+/* Apply block to Library Selection structure */
+.implementation-plan-content {
+    background-color: var(--color-card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--color-shadow);
+    padding: 25px;
+    margin-top: 20px;
+}
+
 
 /* Implementation Plan */
 .library-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 40px;
+    margin-top: 20px;
 }
-
 .library-list li {
-    background-color: var(--color-card-background);
-    padding: 10px 15px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--color-shadow);
-    font-weight: 500; /* Inter Medium */
-}
-.library-list li i {
-    color: var(--color-primary-dark);
-    margin-right: 5px;
+    font-weight: 500; 
 }
 
-/* Change code block background to specified light colors */
+/* Code Block Styling */
 .code-block {
     background-color: var(--color-code-background); 
     color: var(--color-code-text); 
     padding: 20px;
-    border-radius: 10px; /* Matching the 10px specification */
-    border: 1px solid var(--color-code-border); /* Adding the border */
+    border-radius: 10px; 
+    border: 1px solid var(--color-code-border); 
     overflow-x: auto;
-    font-family: 'JetBrains Mono', monospace; /* Using a clean coding font (JetBrains Mono is preferred) */
+    font-family: 'JetBrains Mono', monospace; 
     font-size: 15px;
     white-space: pre-wrap;
     line-height: 1.4;
-    box-shadow: 0 4px 15px var(--color-shadow); /* Keeping a light shadow */
+    box-shadow: 0 4px 15px var(--color-shadow); 
+    margin-top: 20px; /* Space above code block */
 }
 
 /* Evaluation Metrics */
@@ -447,18 +449,6 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     color: var(--color-text-secondary);
 }
 
-.metric-card i {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--color-primary);
-}
-
-.metric-card h4 {
-    font-weight: 500; /* Inter Medium */
-    color: var(--color-primary-dark);
-    margin-bottom: 10px;
-}
-
 /* Conclusion */
 .highlight-box {
     background: var(--color-primary-dark);
@@ -471,10 +461,10 @@ h4 { font-weight: 500; } /* Inter Medium (used for metric numbers/titles) */
     box-shadow: 0 10px 25px rgba(15, 110, 166, 0.4);
 }
 
-/* Footer: Changed from black to dark gray text/background */
+/* Footer: Light background and text */
 footer {
-    background-color: var(--color-background-light); /* Matching the light background of the section above */
-    color: var(--color-text-secondary); /* Dark text for readability */
+    background-color: var(--color-background-light); 
+    color: var(--color-text-secondary); 
     padding: 40px 20px;
     text-align: center;
     font-size: 0.9rem;
@@ -487,13 +477,33 @@ footer .container {
     gap: 15px;
 }
 
-.footer-info, .footer-authors {
-    margin-bottom: 10px;
-}
-
 .copyright {
     margin-top: 20px;
     opacity: 0.7;
+}
+
+/* Floating Action Button (Back to Top) Styles */
+.back-to-top-btn {
+    display: none; 
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 990;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary-dark);
+    color: var(--color-card-background);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.back-to-top-btn:hover {
+    background-color: var(--color-primary);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
 /* Animations */
@@ -514,27 +524,26 @@ footer .container {
 
 /* Responsive Design */
 @media (max-width: 900px) {
-    .hero-title {
-        font-size: 2.5rem;
+    .navbar .container {
+        flex-direction: column;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: auto;
     }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
+    body {
+        padding-top: 85px; /* Adjust padding for expanded mobile nav */
     }
-
-    .author-cards, .ml-subsections, .data-sourcing-content {
+    .nav-links a {
+        margin: 0 10px;
+    }
+    .ml-subsections {
         flex-direction: column;
     }
-    
-    .ml-col {
-        min-width: 100%;
-    }
-
-    .pipeline-steps-grid {
-        justify-content: space-around;
-    }
-    .pipeline-step-card {
-        max-width: 45%;
+    /* Sticky becomes static on mobile to save space */
+    .justification-box {
+        position: static !important; 
+        width: auto !important;
+        margin-top: 30px;
     }
 }
 @media (max-width: 600px) {
