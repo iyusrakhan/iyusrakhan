@@ -10,7 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
+    
+    <nav class="navbar">
+        <div class="container">
+            <span class="navbar-brand">CLV Pipeline Project</span>
+            <div class="nav-links">
+                <a href="#problem-id">Problem</a>
+                <a href="#data-sourcing">Data</a>
+                <a href="#pipeline-design">Pipeline</a>
+                <a href="#ml-methodology">Methodology</a>
+                <a href="#evaluation-metrics">Metrics</a>
+            </div>
+        </div>
+    </nav>
+    
     <header class="hero">
         <div class="container">
             <h1 class="hero-title">Customer Lifetime Value Prediction</h1>
@@ -109,7 +122,7 @@
 
     <section id="pipeline-design" class="report-section bg-light-gray">
         <div class="container fade-in">
-            <h2 class="section-title"><i class="fas fa-bezier-curve icon-purple"></i> 3. Pipeline Design</h2>
+            <h2 class="section-title"><i class="fas fa-bezier-curve icon-purple"></i> 3. Pipeline Design</small></h2>
             <p class="section-intro">We are designing a robust, scalable pipeline suitable for large, transactional data that facilitates subsequent machine learning tasks.</p>
             
             <div class="pipeline-steps-grid">
@@ -140,9 +153,11 @@
                 </div>
             </div>
             
-            <div class="arch-diagram-placeholder">
-                <p class="diagram-note"><i class="fas fa-project-diagram"></i> Full Architectural Diagram is included in the Appendix of the PDF submission.</p>
-                <img src="architecture_diagram.png" alt="Big Data Pipeline Architecture Diagram" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div class="arch-integration">
+                 <h3 class="arch-heading"><i class="fas fa-project-diagram"></i> End-to-End Architecture Diagram</h3>
+                 <p class="arch-subheading">A visual blueprint of the Big Data and Machine Learning flow.</p>
+
+                <img src="architecture_diagram.png" alt="Big Data Pipeline Architecture Diagram" class="diagram-image">
             </div>
         </div>
     </section>
@@ -155,8 +170,8 @@
                 <div class="ml-col">
                     <h3>Pre-processing Strategy</h3>
                     <ul>
-                        <li><i class="fas fa-trash-alt"></i> Handling Missing Values: Rows with missing `CustomerID` are removed, and invalid records (negative quantity/price) are also removed.</li>
-                        <li><i class="fas fa-code-branch"></i> Categorical Variables: The `Country` variable uses <strong>One-Hot Encoding</strong> because it is a nominal (non-ordered) variable.</li>
+                        <li><i class="fas fa-trash-alt"></i> Handling Missing Values: Rows with missing CustomerID are removed, and invalid records (negative quantity/price) are also removed.</li>
+                        <li><i class="fas fa-code-branch"></i> Categorical Variables: The Country variable uses <strong>One-Hot Encoding</strong> because it is a nominal (non-ordered) variable.</li>
                         <li><i class="fas fa-magic"></i> Feature Engineering: The creation of <strong>RFM features</strong> (Recency, Frequency, Monetary) is the fundamental step for CLV.</li>
                         <li><i class="fas fa-sliders-h"></i> Scaling Strategy: <strong>Standardization</strong> (Z-score scaling) is applied to all numerical features to improve training stability for gradient boosting models.</li>
                     </ul>
@@ -202,15 +217,15 @@
         <div class="container fade-in">
             <h2 class="section-title"><i class="fas fa-code icon-purple"></i> 5. Implementation Plan</h2>
             
-            <h3>Library Selection</h3>
-            <ul class="library-list">
-                <li><i class="fas fa-book"></i> <strong>Data Processing:</strong> pyspark (large-scale ETL and aggregation) and pandas (manipulation)</li>
-                <li><i class="fas fa-book"></i> <strong>Modeling:</strong> xgboost (main regressor) and scikit-learn (scaling/splitting)</li>
-                <li><i class="fas fa-book"></i> <strong>Visualization:</strong> matplotlib and seaborn (feature importance/diagnostics)</li>
-            </ul>
+            <div class="implementation-plan-content"> <h3>Library Selection</h3>
+                <ul class="library-list">
+                    <li><i class="fas fa-book"></i> <strong>Data Processing:</strong> pyspark (large-scale ETL and aggregation) and pandas (manipulation)</li>
+                    <li><i class="fas fa-book"></i> <strong>Modeling:</strong> xgboost (main regressor) and scikit-learn (scaling/splitting)</li>
+                    <li><i class="fas fa-book"></i> <strong>Visualization:</strong> matplotlib and seaborn (feature importance/diagnostics)</li>
+                </ul>
 
-            <h3>Pseudo-Code / Logic Flow</h3>
-            <pre class="code-block"><code>
+                <h3>Pseudo-Code / Logic Flow</h3>
+                <pre class="code-block"><code>
 1. LOAD raw transaction data into a PySpark DataFrame.
 2. CLEAN data: Remove canceled invoices, missing CustomerID, or invalid values.
 3. CREATE customer-level features: Group by CustomerID and compute RFM features.
@@ -221,7 +236,8 @@
 8. EVALUATE model: Predict CLV on the test set and calculate evaluation metrics.
 9. INTERPRET results: Analyze feature importance from XGBoost.
 10. DEPLOY: Save the final trained model for production use.
-            </code></pre>
+                </code></pre>
+            </div>
         </div>
     </section>
 
@@ -252,7 +268,8 @@
 
     <section id="conclusion" class="report-section bg-light-gray">
         <div class="container fade-in">
-            <h2 class="section-title">7. Conclusion</h2> <p>This proposal details a comprehensive, scalable Customer Lifetime Value prediction solution utilizing a PySpark-based pipeline and the high-performance XGBoost Regressor. The focus on robust feature engineering (RFM) and the critical evaluation metric of RMSE ensures the resulting model is highly accurate and directly supports strategic business decisions.</p>
+            <h2 class="section-title">7. Conclusion</h2> 
+            <p>This proposal details a comprehensive, scalable Customer Lifetime Value prediction solution utilizing a PySpark-based pipeline and the high-performance XGBoost Regressor. The focus on robust feature engineering (RFM) and the critical evaluation metric of RMSE ensures the resulting model is highly accurate and directly supports strategic business decisions.</p>
             
             <div class="highlight-box">
                 <p><strong>Accurate, Scalable, Business-Oriented CLV Prediction Pipeline</strong></p>
@@ -274,6 +291,10 @@
             <p class="copyright">&copy; 2025 Data Science Project. All rights reserved.</p>
         </div>
     </footer>
+
+    <button id="backToTopBtn" class="back-to-top-btn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
