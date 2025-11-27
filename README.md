@@ -2,7 +2,7 @@
 
 ##  Live Project Report & Visualization
 
-*View the full, interactive website report here:* [https://MuskanAsadInsights.github.io/CLV-Prediction-Pipeline/](https://MuskanAsadInsights.github.io/CLV-Prediction-Pipeline/)
+*View the full, interactive website report here:* [(https://iyusrakhan.github.io/iyusrakhan/)]
 
 ---
 
